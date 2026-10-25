@@ -37,6 +37,7 @@ Kb_lab/
 ├── lab2_frequency_response/
 │   ├── instructions/              ← Lab 2 instruction sheet
 │   ├── result_sheets/             ← blank, partly filled and final result sheets
+│   ├── report/                    ← DRAFT full Lab 2 report (.docx + .pdf) and its figures
 │   ├── canvas_screenshots/        ← screenshots of the Canvas assignment page
 │   └── oscilloscope_photos/       ← phone photos of the oscilloscope screen
 └── assessment_admin/              ← marking scheme + group-work cover sheet
