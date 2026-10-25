@@ -21,9 +21,9 @@
 | Abstract | 5% | Motivation, aim, method, results and implications in a concise summary |
 | Introduction | 10% | Context + relevant background theory/literature; aim stated at the end |
 | Method | 20% | Repeatable detail, equations used, assumptions stated and supported |
-| Results | 20% | All data in tables/figures, each captioned and referred to in the text |
+| Results | 15% | All data in tables/figures, each captioned and referred to in the text |
 | Discussion | 20% | Insightful analysis of **all three options** (here: sine-wave time domain, sine-wave spectrum, square wave), links to theory, limitations discussed |
-| Conclusion | 5% | Aim, main findings, limitations, broader implications |
+| Conclusion | 10% | Aim (~200 words total), main findings, limitations, broader implications |
 | Written skills | 15% | Technical vocabulary, style, logical flow, error-free writing |
 | Referencing | 5% | Accurate APA citations |
 

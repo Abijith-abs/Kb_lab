@@ -39,9 +39,16 @@ the assignment details (6 points, group, due Sun 25 Oct 2026 23:59), and the sub
 academic-integrity/AI-use declaration. Files: `…10.17.22 AM (1)`, `…10.17.22 AM`, `…10.17.23 AM (1)`, `…10.17.23 AM`.
 
 ## `lab2_frequency_response/oscilloscope_photos/`
-22 phone photos (named `WhatsApp Image 2026-10-25 at 10.17.25 AM.jpeg` … `10.17.33 AM.jpeg`) of a
+22 phone photos (named `WhatsApp Image 2026-10-25 at 10.17.25 AM.jpeg` … `10.17.33 AM (1).jpeg`) of a
 Keysight InfiniiVision DSOX4024G oscilloscope screen showing the RC-circuit measurements. See
 `OSCILLOSCOPE_PHOTOS.md`.
+
+## `lab2_frequency_response/report/`
+| File | What it is |
+|------|-----------|
+| `Lab_Report2.pdf` | **Submission-ready PDF report** (16 pages): Page 1 embeds the official ECU Groupwork Cover Sheet with unit metadata pre-filled (`2026`, `Semester 2`, `ENS6160.4`, `Signals and Systems`, `Laboratory 2: Frequency Response of Systems`) and all 20 student name/ID/contribution/signature AcroForm fields preserved as clickable/editable PDF form fields, followed by the formal title page, Abstract (328 words), populated Table of Contents, IMRaD body with Equations (1)–(9), Tables 1–6, Figures 1–11, Conclusion (201 words), APA 7th References, and AI-use acknowledgement. |
+| `Lab_Report2.docx` | **Editable Word counterpart** mirroring the complete content, tables, equations, figures, cover sheet, and formatting of `Lab_Report2.pdf`. |
+| `figures/fig01_circuit_schematic.png` … `fig11_combined_bode_verification.png` | 11 publication-grade 300-DPI figures (circuit schematic, theoretical Bode response, sinusoidal & square-wave spectra/waveforms, cropped oscilloscope screen captures, and combined Bode verification). |
 
 ## `assessment_admin/`
 | File | What it is |

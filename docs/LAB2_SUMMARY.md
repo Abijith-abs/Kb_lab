@@ -1,73 +1,72 @@
-# Lab 2 — Frequency Response of Systems
+# Lab 2 Technical Summary — Frequency Response of Systems
 
-## Goal
-Derive the frequency response H(jω) of a first-order **RC low-pass filter**, predict what it does to a
-sine wave and to a square wave, then **measure** it with a function generator and a Keysight DSO-X
-oscilloscope and compare theory with measurement (time domain and FFT/frequency domain).
+Reference summary of the verified theory, experimental oscilloscope data, and audit corrections incorporated into `lab2_frequency_response/report/Lab_Report2.pdf` and `Lab_Report2.docx`.
 
-## The circuit
-Series R–C, input = source voltage Vi, output = capacitor voltage Vo.
-**R = 1.5 kΩ, C = 0.01 µF** → RC = 15 µs.
+---
 
-LCCDE: RC·dVo/dt + Vo = Vi. Setting the input to e^{jωt} (method of Tute 5 Q6) gives
+## 1. Circuit & Transfer Function
+- **Topology:** Series RC low-pass filter (`R = 1.5 kΩ`, `C = 0.01 µF = 10 nF`), output `vo(t) = vC(t)` measured across the capacitor.
+- **Governing LCCDE:** `RC dv_o(t)/dt + v_o(t) = v_i(t)` with time constant `τ = RC = 15 µs`.
+- **Frequency Response:**
+  - `H(jω) = 1 / (1 + jωRC)`
+  - `|H(jω)| = 1 / √(1 + (ωRC)²)`
+  - `∠H(jω) = −arctan(ωRC)`
+- **−3 dB Cut-Off Frequency:** `fc = 1 / (2πRC) = 10,610.3 Hz ≈ 10.61 kHz` (`|H| = 1/√2 = 0.7071`, `−3.01 dB`, `∠H = −45.00°`).
+- **Probe Loading Check:** Keysight DSOX4024G Ch2 passive input (`1 MΩ ∥ 16 pF`) yields DC divider `0.9985` (`−0.013 dB`) and shifts `fc` to `10,609.3 Hz` (`<0.01%`), confirming negligible loading.
 
-> **H(jω) = 1 / (1 + jωRC)**, |H| = 1/√(1+(ωRC)²), ∠H = −arctan(ωRC)
+---
 
-Cut-off (−3 dB, |H| = 0.707) at **f_c = 1/(2πRC) ≈ 10.6 kHz**. It is a **low-pass** filter.
+## 2. Post-Lab Theoretical Values
 
-## Post-lab (theory) — values checked against the formula
-| f | ω (rad/s) | \|H\| | \|H\| dB | ∠H |
-|---|-----------|------|---------|-----|
-| 1 kHz | 6283.19 | 0.9956 | −0.038 | −5.38° |
-| 10 kHz | 62831.85 | 0.7277 | −2.76 | −43.30° |
-| 40 kHz | 251327.41 | 0.2564 | −11.82 | −75.14° |
+### Sinusoidal Response (`15 Vpp` = `7.50 Vpk`, `14.49 dBVrms`, `0°` phase)
+| `f` | `ω` (rad/s) | `|H(jω)|` | `|H|` (dB) | `∠H(jω)` | `|Vo|` (`Vpk`) | `|Vo|` (`Vpp`) | `|Vo|` (`dBVrms`) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `1 kHz` | `6,283.19` | `0.9956` | `−0.04` (`−0.0384`) | `−5.38°` | `7.47` | `14.93` | `14.45` |
+| `10 kHz` | `62,831.85` | `0.7277` | `−2.76` (`−2.7606`) | `−43.30°` | `5.46` | `10.92` | `11.73` |
+| `40 kHz` | `251,327.41` | `0.2564` | `−11.82` (`−11.8219`) | `−75.14°` | `1.92` | `3.85` | `2.67` |
 
-**Part B** — 15 Vpk-pk sine in (7.5 V peak): output peaks ≈ 7.47 V / 5.46 V / 1.92 V
-(i.e. 14.93 / 10.92 / 3.85 Vpk-pk) at 1 / 10 / 40 kHz, with the phases above.
+### 8 kHz Periodic Square Wave (`±7.50 V`, `50%` duty cycle, `bn = 30/(nπ)` Vpk for odd `n`, `0` for even `n`)
+> **Note on Peak vs. RMS dBV:** Keysight DSOX4024G Math FFT displays magnitudes in **dBVrms** (`20 log10(Vrms / 1 V) = 20 log10(Vpk) − 3.01 dB`). Both conventions yield the identical filter gain `G_dB = Out − In`.
 
-**Part C** — 15 Vpk-pk, 8 kHz, 50% square wave: b_n = 4h/(nπ) for odd n with h = 7.5 V →
-b₁ = 9.55 V (8 kHz), b₃ = 3.18 V (24 kHz), b₅ = 1.91 V (40 kHz). Filter gain at those harmonics
-0.7985 / 0.4041 / 0.2564 → output harmonics 7.63 V / 1.29 V / 0.49 V.
-Expected output: a rounded, "charging/discharging" waveform (higher harmonics attenuated).
+| Harmonic | `f` (kHz) | `bn` (`Vpk`) | Input (`dBVpk` / `dBVrms`) | `|H(jnω0)|` (dB) | `∠H(jnω0)` | Output (`Vpk`) | Output (`dBVpk` / `dBVrms`) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `n = 1` | `8.0` | `9.55` | `19.60 / 16.59` | `0.7985 (−1.95 dB)` | `−37.02°` | `7.62` | `17.64 / 14.63` |
+| `n = 3` | `24.0` | `3.18` | `10.06 / 7.05` | `0.4043 (−7.87 dB)` | `−66.15°` | `1.29` | `2.19 / −0.82` |
+| `n = 5` | `40.0` | `1.91` | `5.62 / 2.61` | `0.2564 (−11.82 dB)` | `−75.14°` | `0.49` | `−6.20 / −9.21` |
 
-## Measured data (from `Lab 2 result finalll.pdf`)
-**Table A — time domain (sine, 15 Vpk-pk in)**
-| f | Mag. theory | Mag. measured | Phase theory | Phase measured |
-|---|------|------|------|------|
-| 1 kHz | 14.93 | 15.20 | −5.39° | −6.65° |
-| 10 kHz | 10.92 | 11.50 | −43.30° | −42.30° |
-| 40 kHz | 3.85 | 4.22 | −75.14° | −73.71° |
+- **Exact Time-Domain Steady-State Capacitor Peak (`T0/2 = 62.5 µs = 4.17τ`):**
+  `Vpeak,ss = ±7.5 × (1 − e^(−62.5/15)) / (1 + e^(−62.5/15)) = ±7.27 V` (`14.54 Vpp`).
 
-**Table B — FFT of sine input/output**
-| f | Output | Input | Gain measured | Gain theory |
-|---|---|---|---|---|
-| 1 kHz | 14.61 dBV | 14.83 dBV | −0.23 dB | −0.0384 dB |
-| 10 kHz | 12.18 dBV | 14.99 dBV | −2.81 dB | −2.7606 dB |
-| 40 kHz | 3.47 dBV | 14.83 dBV | −11.35 dB | −11.821 dB |
+---
 
-**Table C — 8 kHz square wave, harmonic gains**
-| Harmonic | Output | Input | Gain measured | Gain theory |
-|---|---|---|---|---|
-| Fundamental (8 kHz) | 20.19 dBV | 22.14 dBV | −1.95 dB | −1.96 dB |
-| 3rd (24 kHz) | 4.72 dBV | 12.60 dBV | −7.87 dB | −7.87 dB |
-| 5th (40 kHz) | −3.65 dBV | 8.17 dBV | −11.82 dB | −11.82 dB |
+## 3. Verified Experimental Results
 
-Measured and theoretical values agree closely; the output falls with frequency, confirming low-pass behaviour.
+### Part 1 — Sinusoidal Time Domain (Normalised by Measured `Vi,pp`)
+| `f` | `Vi,pp` (V) | `Vo,pp` (V) | `|H|` Theory | `|H|` Measured (`Vo/Vi`) | Mag. Error | `∠H` Theory | `∠H` Measured |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `1 kHz` | `15.60` | `15.20` | `0.9956` | `0.9744` | `−2.13%` | `−5.38°` | `−6.55°` (`−6.65°` sheet) |
+| `10 kHz` | `15.90` | `11.50` | `0.7277` | `0.7233` | `−0.61%` | `−43.30°` | `−42.30°` |
+| `40 kHz` | `15.60` | `4.22` | `0.2564` | `0.2705` | `+5.51%` | `−75.14°` | `−73.71°` |
 
-## How the three result-sheet versions differ
-1. `Lab 2 result sheet-1.pdf` — blank template.
-2. `… (1) ss lab 2.pdf` — post-lab filled in (including the screenshots of the plots).
-3. `Lab 2 result finalll.pdf` — adds Part B/C theory and Tables A–C.
-Still empty in all versions: student name/number, the written answers (filter type, −3 dB meaning, cut-off,
-behaviour in time/frequency domain), sketches and the discussion section.
+### Part 2 — Sinusoidal Frequency Domain (`dBVrms`)
+| `f` | Output (`dBVrms`) | Input (`dBVrms`) | Measured Gain (dB) | Theoretical Gain (dB) | `|ΔG|` (dB) |
+|---|---:|---:|---:|---:|---:|
+| `1 kHz` | `14.61` | `14.83` | `−0.22` | `−0.04` | `0.18` |
+| `10 kHz` | `12.18` | `14.99` | `−2.81` | `−2.76` | `0.05` |
+| `40 kHz` | `3.47` | `14.83` | `−11.36` | `−11.82` | `0.46` |
 
-## Things to fix before submitting (observed while reviewing)
-- The 40 kHz dB value is shown as **−73.71** in the earlier sheet (and the final sheet's first post-lab table);
-  the correct value is **−11.82 dB** (20·log₁₀ 0.2564). The final sheet's second table has it right.
-- In the square-wave table the harmonic frequencies are written "3rd = 2000 Hz" and "5th = 4000 Hz";
-  they should be **24 000 Hz** and **40 000 Hz** (3×8 kHz, 5×8 kHz).
-- The Table A phase measured at 40 kHz (−73.71°) is the same number as the mistaken dB value — double-check
-  against the scope photo.
-- The 40 kHz sine *magnitude* in the theory table is 0.2564 in one place and 0.2568 in another.
-- Sketches, written answers, name/ID and the group cover sheet are still outstanding; a full IMRaD report
-  is required (see `ASSESSMENT_REQUIREMENTS.md`).
+### Part 3 — 8 kHz Square Wave Oscilloscope FFT Cursor Measurements (`dBVrms`)
+Extracted directly from `10.17.29 AM (1)` – `10.17.33 AM (1)`:
+| Harmonic | Scope `f` (In / Out) | Output `FFT(Ch2)` | Input `FFT(Ch1)` | Measured Gain (dB) | Theoretical Gain (dB) | `|ΔG|` (dB) |
+|---|---|---:|---:|---:|---:|---:|
+| `n = 1` | `8.0 / 8.0 kHz` | `14.53 dBV` | `16.56 dBV` | `−2.03` | `−1.95` | `0.08` |
+| `n = 3` | `24.0 / 23.9 kHz` | `−0.63 dBV` | `7.19 dBV` | `−7.81` | `−7.87` | `0.06` |
+| `n = 5` | `40.0 / 40.0 kHz` | `−9.06 dBV` | `2.66 dBV` | `−11.72` | `−11.82` | `0.10` |
+
+---
+
+## 4. Known Errors in Raw Student Worksheet Files (`result_sheets/`)
+1. **`Lab 2 result sheet-1 (1) ss lab 2.pdf`:** Entered the phase angle `−73.71` in the `40 kHz` dB magnitude column instead of `−11.82 dB`.
+2. **`Lab 2 result finalll.pdf` (Post-Lab C & Table C):**
+   - Wrote `|H(j·2π·8000)| = 0.7854` (`π/4`) instead of the true RC gain `0.7985` (`−1.95 dB`), giving `7.50 V` (`17.50 dBVpk`) instead of `7.62 V` (`17.64 dBVpk`).
+   - Copied the sinusoidal dBV numbers (`14.61/14.83`, `12.18/14.99`, `3.47/14.83` at `1, 10, 40 kHz`) into Table C instead of transcribing the actual `8, 24, 40 kHz` square-wave FFT cursor photos (`14.53/16.56`, `−0.63/7.19`, `−9.06/2.66 dBV`). All figures and tables in `Lab_Report2` use the authentic oscilloscope FFT cursor data.

@@ -1,55 +1,65 @@
-# Kb_lab — Signals and Systems lab workspace
+# ENS3553 / ENS6160.4 — Signals and Systems (ECU) — Lab Workspace
 
-A personal study/assignment repository for **ENS3553 / ENS6160 Signals and Systems**
-(School of Engineering, Edith Cowan University). It holds everything needed for the
-**laboratory assessments**: lecture slides, the lab instruction and result sheets,
-a finished Lab 1 report, photos taken in the lab, screenshots of the Canvas
-assignment page, and the marking/cover-sheet paperwork.
+Organized coursework, experimental oscilloscope captures, and the final submission-ready **Laboratory Report 2: Frequency Response of Systems** for **Signals and Systems** (`ENS3553` / `ENS6160.4`, Semester 2, 2026, Edith Cowan University).
 
-## The big picture
+---
 
-| Lab | Topic | What this repo contains |
-|-----|-------|-------------------------|
-| **Lab 1** | Spectral analysis of periodic signals (sine, square, triangle; Fourier series vs. oscilloscope FFT) | A completed report (`.docx`) |
-| **Lab 2** | Frequency response of an RC low-pass filter (R = 1.5 kΩ, C = 0.01 µF) | Instruction sheet, three versions of the result sheet, 22 oscilloscope photos, 4 Canvas screenshots |
-
-Lab 2 (6% of the unit grade, group work, due **Sun 25 Oct 2026, 23:59** on Canvas) is the
-assignment currently being prepared. The work is: do the post-lab theory, build the
-RC circuit, measure it with a function generator and oscilloscope, then write an
-IMRaD-style report using the marking scheme and the mandatory group cover sheet.
-
-## Folder structure
+## Repository Structure
 
 ```
 Kb_lab/
-├── README.md                      ← you are here
-├── docs/                          ← explanatory notes (start here)
-│   ├── FILE_CATALOG.md            ← what every single file is
-│   ├── LAB1_SUMMARY.md            ← Lab 1 report explained
-│   ├── LAB2_SUMMARY.md            ← Lab 2 theory, data and results explained
-│   ├── COURSE_NOTES.md            ← Module 5 / Module 6 slides + tutorial summary
-│   ├── OSCILLOSCOPE_PHOTOS.md     ← the 22 lab photos, grouped
-│   └── ASSESSMENT_REQUIREMENTS.md ← report structure, marking scheme, cover sheet
+├── README.md                              ← Overview & final submission checklist
+├── docs/                                  ← Verified technical & administrative notes
+│   ├── FILE_CATALOG.md                    ← Guide to every file in the repository
+│   ├── ASSESSMENT_REQUIREMENTS.md         ← Rubric weights, Canvas rules & cover-sheet policy
+│   ├── COURSE_NOTES.md                    ← Summary of Module 5 & 6 slides + Tutorial 5 Q6
+│   ├── LAB1_SUMMARY.md                    ← Reference notes on Lab 1 (Spectral Analysis)
+│   ├── LAB2_SUMMARY.md                    ← Verified RC theory, experimental tables & worksheet errata
+│   └── OSCILLOSCOPE_PHOTOS.md             ← Verified catalog of all 22 Keysight DSOX4024G captures
+│
 ├── course_material/
-│   ├── lectures/                  ← Module 5 and Module 6 slide PDFs
-│   └── tutorials/                 ← Tute 5 Q6
-├── lab1_spectral_analysis/        ← Lab 1 report (.docx)
+│   ├── lectures/
+│   │   ├── Signal and system Module 5 slides.pdf
+│   │   └── Signals and Systems Module 6 slides.pdf
+│   └── tutorials/
+│       └── Tute 5 Q6.pdf
+│
+├── lab1_spectral_analysis/
+│   └── signals and system lab 1 kbb.docx  ← Completed Lab 1 report (formatting/style reference)
+│
 ├── lab2_frequency_response/
-│   ├── instructions/              ← Lab 2 instruction sheet
-│   ├── result_sheets/             ← blank, partly filled and final result sheets
-│   ├── report/                    ← DRAFT full Lab 2 report (.docx + .pdf) and its figures
-│   ├── canvas_screenshots/        ← screenshots of the Canvas assignment page
-│   └── oscilloscope_photos/       ← phone photos of the oscilloscope screen
-└── assessment_admin/              ← marking scheme + group-work cover sheet
+│   ├── instructions/
+│   │   └── Lab 2 instruction sheet-3.pdf  ← Official Lab 2 brief
+│   ├── result_sheets/
+│   │   ├── Lab 2 result sheet-1.pdf               ← Blank template
+│   │   ├── Lab 2 result sheet-1 (1) ss lab 2.pdf  ← Partially filled worksheet
+│   │   └── Lab 2 result finalll.pdf               ← Completed worksheet
+│   ├── canvas_screenshots/                ← 4 screenshots of the Canvas assignment page
+│   ├── oscilloscope_photos/               ← 22 Keysight DSOX4024G time & FFT photos
+│   └── report/                            ← Final submission deliverables
+│       ├── Lab_Report2.pdf                ← Final PDF (with fillable Page 1 ECU cover sheet)
+│       ├── Lab_Report2.docx               ← Editable Word (.docx) version
+│       └── figures/                       ← 11 publication-grade 300-DPI figures (fig01–fig11)
+│
+└── assessment_admin/
+    ├── Labs Marking Scheme-1.pdf          ← Official marking rubric
+    └── Groupwork coversheet v23 08 2024_Fillable (4).pdf
 ```
 
-## Suggested reading order
+---
 
-1. `docs/FILE_CATALOG.md` — quick inventory.
-2. `docs/LAB2_SUMMARY.md` — the live assignment.
-3. `docs/ASSESSMENT_REQUIREMENTS.md` — what the report must contain.
-4. `docs/COURSE_NOTES.md` — the theory behind it.
+## Final Deliverables (`lab2_frequency_response/report/`)
 
-> Note: the repository's original files were reorganised into the folders above; nothing
-> was renamed or edited, only moved (original filenames, including the WhatsApp image
-> names, are unchanged).
+- **`Lab_Report2.pdf`** *(16 pages)* — Ready for group sign-off and Canvas upload:
+  - **Page 1:** Official **ECU Groupwork Cover Sheet** with unit details pre-filled (`2026`, `Semester 2`, `ENS6160.4`, `Signals and Systems`, `Laboratory 2: Frequency Response of Systems`) and all student rows (`Student Name`, `Student Number`, `Relative Contribution` → enter `"equal"`, `Signature`) preserved as **interactive fillable PDF form fields**.
+  - **Pages 2–4:** Formal ECU title page, **Abstract** (`328 words`, within the `200–400` word requirement), and populated **Table of Contents** with exact page numbers.
+  - **Pages 5–16:** Full IMRaD technical report covering **Introduction**, **Method** (eigenfunction derivation, Equations 1–9, schematic Figure 1, probe-loading & termination analysis), **Results** (Tables 1–6 and 300-DPI Figures 2–11 using verified oscilloscope time-domain and FFT cursor measurements), **Discussion** (filter classification, −3 dB cut-off, time–frequency duality, all three experimental options, square-wave harmonic shaping, limitations & improvements), **Conclusion** (`201 words`, matching the `~200` word target), **APA 7th References**, and **Acknowledgement of AI Use**.
+- **`Lab_Report2.docx`** — Full editable Microsoft Word version matching `Lab_Report2.pdf`.
+
+---
+
+## Final Pre-Upload Step for Group Members
+
+1. Open `lab2_frequency_response/report/Lab_Report2.pdf` in Adobe Acrobat Reader (or edit `Lab_Report2.docx` in Microsoft Word and export to PDF).
+2. On **Page 1 (ECU Group Work Declaration Cover Sheet)**, type each group member's **Student Name**, **Student Number**, **`equal`** under *Relative Contribution*, and add each member's **Signature**.
+3. Upload the single signed PDF to **Canvas → ENS6160.4 → Assignments → Laboratory 2: Frequency Response of Systems** and tick the academic-integrity declaration checkbox.
