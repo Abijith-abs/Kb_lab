@@ -46,9 +46,15 @@ Keysight InfiniiVision DSOX4024G oscilloscope screen showing the RC-circuit meas
 ## `lab2_frequency_response/report/`
 | File | What it is |
 |------|-----------|
-| `Lab_Report2.pdf` | **Submission-ready PDF report** (16 pages): Page 1 embeds the official ECU Groupwork Cover Sheet with unit metadata pre-filled (`2026`, `Semester 2`, `ENS6160.4`, `Signals and Systems`, `Laboratory 2: Frequency Response of Systems`) and all 20 student name/ID/contribution/signature AcroForm fields preserved as clickable/editable PDF form fields, followed by the formal title page, Abstract (328 words), populated Table of Contents, IMRaD body with Equations (1)–(9), Tables 1–6, Figures 1–11, Conclusion (201 words), APA 7th References, and AI-use acknowledgement. |
-| `Lab_Report2.docx` | **Editable Word counterpart** mirroring the complete content, tables, equations, figures, cover sheet, and formatting of `Lab_Report2.pdf`. |
-| `figures/fig01_circuit_schematic.png` … `fig11_combined_bode_verification.png` | 11 publication-grade 300-DPI figures (circuit schematic, theoretical Bode response, sinusoidal & square-wave spectra/waveforms, cropped oscilloscope screen captures, and combined Bode verification). |
+| `Lab_Report2.docx` | **Editable Word report (Square-Wave Section & Lab Report)**: contains only the Square-Wave investigation and shared RC circuit foundation for the 2-member group split (Partner 1: Sine Wave; Partner 2: Square Wave), strictly separating `15 Vpp` theoretical Fourier results, `20.1 Vpp` Table C predicted harmonic levels, and `20.1 Vpp / 14.9 Vpp` oscilloscope observations. |
+| `Lab_Report2.pdf` | **Matching 15-page PDF counterpart** with the official ECU Groupwork Cover Sheet embedded as Page 1 (unit details pre-filled and all student AcroForm fields preserved as editable/clickable fields). |
+| `figures/fig01_circuit_schematic.png` … `fig07_predicted_20v1_comparison.png` | 7 publication-grade 300-DPI square-wave figures (circuit schematic, Bode plot at 8/24/40 kHz, 15 Vpp theoretical spectra & waveforms, oscilloscope waveform & FFT(CH2) captures, and 20.1 Vpp Table C comparison). |
+
+## Root Reference Files Added by Partner / User
+| File | What it is |
+|------|-----------|
+| `La.pdf` | Partner's calculation worksheet containing Post-Lab Section C (`15 Vpp` Fourier & harmonic tables) and Result Sheet Table C (`20.1 Vpp` predicted harmonic values). |
+| `signals lab 2 report copy.docx` | Sample past-report formatting/structure reference file. |
 
 ## `assessment_admin/`
 | File | What it is |

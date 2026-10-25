@@ -48,15 +48,9 @@ All 22 photographs (`2048 × 1536` JPEG, named `WhatsApp Image 2026-10-25 at 10.
 
 ---
 
-### 4. Part 3 — 8 kHz Square Wave Output Spectrum `FFT(Ch2)` Harmonic Peaks (6 Photos)
+### 4. Part 3 — 8 kHz Square Wave Output Spectrum `FFT(Ch2)` Captures (6 Photos)
 
-| Filename (`WhatsApp Image 2026-10-25 at …`) | Harmonic | Cursor `X1` (Frequency) | Cursor `Y1(M1)` (Magnitude) | Theory (`15 Vpp`, dBVrms) | Measured Gain (`Out − In`) | Report Usage |
-|---|---|---|---|---|---|---|
-| `10.17.31 AM (1).jpeg` | **Fundamental (`n = 1`)** | `8.0 kHz` | **`14.5313 dBV`** (`14.53 dBV`) | `14.63 dBV` | **`−2.03 dB`** (th: `−1.95 dB`) | **Figure 10(d)** |
-| `10.17.32 AM.jpeg` | Fundamental (`n = 1`, dup.) | `8.0 kHz` | `14.5313 dBV` | `14.63 dBV` | `−2.03 dB` | Duplicate backup |
-| `10.17.32 AM (1).jpeg` | **3rd Harmonic (`n = 3`)** | `23.9 kHz`* | **`−625.00 mdBV`** (`−0.63 dBV`) | `−0.82 dBV` | **`−7.81 dB`** (th: `−7.87 dB`) | **Figure 10(e)** |
-| `10.17.32 AM (2).jpeg` | 3rd Harmonic (`n = 3`, dup.) | `23.9 kHz`* | `−625.00 mdBV` (`−0.63 dBV`) | `−0.82 dBV` | `−7.81 dB` | Duplicate backup |
-| `10.17.33 AM.jpeg` | **5th Harmonic (`n = 5`)** | `40.0 kHz` | **`−9.0625 dBV`** (`−9.06 dBV`) | `−9.21 dBV` | **`−11.72 dB`** (th: `−11.82 dB`) | **Figure 10(f)** |
-| `10.17.33 AM (1).jpeg` | 5th Harmonic (`n = 5`, dup.) | `40.0 kHz` | `−9.0625 dBV` | `−9.21 dBV` | `−11.72 dB` | Duplicate backup |
-
-*\*At a 50.0 kHz span (`954 Hz` FFT bin spacing), `23.9 kHz` is the closest discrete FFT bin to `24.0 kHz`.*
+Inspection of `10.17.31 AM (1)` through `10.17.33 AM (1)` shows `FFT(CH2)` across the odd harmonics (`8.0 kHz`, `23.9 ≈ 24 kHz`, and `40.0 kHz`), but note an important experimental cursor limitation:
+- In `10.17.33 AM (1).jpeg` (`X1 = 8.0 kHz`), `10.17.33 AM.jpeg` (`X1 = 23.9 kHz`), and `10.17.32 AM (1).jpeg` (`X1 = 40.0 kHz`) — used in **Figure 6(a–c)** of `Lab_Report2` — the vertical frequency cursor `X1` marks each odd harmonic while the horizontal `Y1` cursor remains parked at `−2.50000 dBV` rather than tracking the spectral peak.
+- In `10.17.31 AM (1).jpeg`, `10.17.31 AM (2).jpeg`, and `10.17.32 AM.jpeg`, `X1` remained parked at `40.0 kHz` while `Y1` was positioned manually (`14.53 dBV`, `−0.625 dBV`, `−9.06 dBV`).
+- Consequently, as agreed by the lab group (`La.pdf`), paired input/output FFT peak amplitudes could not be verified with sufficient confidence for direct experimental harmonic-gain calculation, and **Table C** in `Lab_Report2` explicitly reports **predicted harmonic values** scaled to the observed `20.1 Vpp` input rather than claiming unverified cursor readouts as measured gains.

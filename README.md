@@ -1,6 +1,6 @@
 # ENS3553 / ENS6160.4 — Signals and Systems (ECU) — Lab Workspace
 
-Organized coursework, experimental oscilloscope captures, and the final submission-ready **Laboratory Report 2: Frequency Response of Systems** for **Signals and Systems** (`ENS3553` / `ENS6160.4`, Semester 2, 2026, Edith Cowan University).
+Organized coursework, experimental oscilloscope captures, and the **Square-Wave Section & Lab Report (`Lab_Report2.docx` / `Lab_Report2.pdf`)** for **Laboratory 2: Frequency Response of Systems** (`ENS3553` / `ENS6160.4`, Semester 2, 2026, Edith Cowan University).
 
 ---
 
@@ -8,13 +8,15 @@ Organized coursework, experimental oscilloscope captures, and the final submissi
 
 ```
 Kb_lab/
-├── README.md                              ← Overview & final submission checklist
+├── README.md                              ← Overview & group workflow guide
+├── La.pdf                                 ← Partner's calculation worksheet (Post-Lab C & Table C)
+├── signals lab 2 report copy.docx         ← Sample layout reference file
 ├── docs/                                  ← Verified technical & administrative notes
 │   ├── FILE_CATALOG.md                    ← Guide to every file in the repository
 │   ├── ASSESSMENT_REQUIREMENTS.md         ← Rubric weights, Canvas rules & cover-sheet policy
 │   ├── COURSE_NOTES.md                    ← Summary of Module 5 & 6 slides + Tutorial 5 Q6
 │   ├── LAB1_SUMMARY.md                    ← Reference notes on Lab 1 (Spectral Analysis)
-│   ├── LAB2_SUMMARY.md                    ← Verified RC theory, experimental tables & worksheet errata
+│   ├── LAB2_SUMMARY.md                    ← Verified square-wave theory, Table C predictions & measurements
 │   └── OSCILLOSCOPE_PHOTOS.md             ← Verified catalog of all 22 Keysight DSOX4024G captures
 │
 ├── course_material/
@@ -33,13 +35,13 @@ Kb_lab/
 │   ├── result_sheets/
 │   │   ├── Lab 2 result sheet-1.pdf               ← Blank template
 │   │   ├── Lab 2 result sheet-1 (1) ss lab 2.pdf  ← Partially filled worksheet
-│   │   └── Lab 2 result finalll.pdf               ← Completed worksheet
+│   │   └── Lab 2 result finalll.pdf               ← Earlier worksheet
 │   ├── canvas_screenshots/                ← 4 screenshots of the Canvas assignment page
 │   ├── oscilloscope_photos/               ← 22 Keysight DSOX4024G time & FFT photos
-│   └── report/                            ← Final submission deliverables
-│       ├── Lab_Report2.pdf                ← Final PDF (with fillable Page 1 ECU cover sheet)
-│       ├── Lab_Report2.docx               ← Editable Word (.docx) version
-│       └── figures/                       ← 11 publication-grade 300-DPI figures (fig01–fig11)
+│   └── report/                            ← Square-wave lab report deliverables (2-person split)
+│       ├── Lab_Report2.docx               ← Editable Word (.docx) — Square-Wave Lab Report & Sections
+│       ├── Lab_Report2.pdf                ← Matching 15-page PDF (with fillable Page 1 ECU cover sheet)
+│       └── figures/                       ← 7 publication-grade 300-DPI square-wave figures (fig01–fig07)
 │
 └── assessment_admin/
     ├── Labs Marking Scheme-1.pdf          ← Official marking rubric
@@ -50,16 +52,10 @@ Kb_lab/
 
 ## Final Deliverables (`lab2_frequency_response/report/`)
 
-- **`Lab_Report2.pdf`** *(16 pages)* — Ready for group sign-off and Canvas upload:
-  - **Page 1:** Official **ECU Groupwork Cover Sheet** with unit details pre-filled (`2026`, `Semester 2`, `ENS6160.4`, `Signals and Systems`, `Laboratory 2: Frequency Response of Systems`) and all student rows (`Student Name`, `Student Number`, `Relative Contribution` → enter `"equal"`, `Signature`) preserved as **interactive fillable PDF form fields**.
-  - **Pages 2–4:** Formal ECU title page, **Abstract** (`328 words`, within the `200–400` word requirement), and populated **Table of Contents** with exact page numbers.
-  - **Pages 5–16:** Full IMRaD technical report covering **Introduction**, **Method** (eigenfunction derivation, Equations 1–9, schematic Figure 1, probe-loading & termination analysis), **Results** (Tables 1–6 and 300-DPI Figures 2–11 using verified oscilloscope time-domain and FFT cursor measurements), **Discussion** (filter classification, −3 dB cut-off, time–frequency duality, all three experimental options, square-wave harmonic shaping, limitations & improvements), **Conclusion** (`201 words`, matching the `~200` word target), **APA 7th References**, and **Acknowledgement of AI Use**.
-- **`Lab_Report2.docx`** — Full editable Microsoft Word version matching `Lab_Report2.pdf`.
+Structured for the **2-member group split** (Partner 1: Sine-Wave Section; Partner 2: Square-Wave Section):
 
----
-
-## Final Pre-Upload Step for Group Members
-
-1. Open `lab2_frequency_response/report/Lab_Report2.pdf` in Adobe Acrobat Reader (or edit `Lab_Report2.docx` in Microsoft Word and export to PDF).
-2. On **Page 1 (ECU Group Work Declaration Cover Sheet)**, type each group member's **Student Name**, **Student Number**, **`equal`** under *Relative Contribution*, and add each member's **Signature**.
-3. Upload the single signed PDF to **Canvas → ENS6160.4 → Assignments → Laboratory 2: Frequency Response of Systems** and tick the academic-integrity declaration checkbox.
+- **`Lab_Report2.docx`** — Full editable Microsoft Word report containing **only the Square-Wave investigation and shared RC circuit foundation**, ready either to review standalone or combine directly with the partner's Sine-Wave sections:
+  - **Theoretical Calculations (`15 Vpp` manual specification):** Keeps the instructed `15 Vpp` (`±7.50 V`, `8 kHz`, `50%` duty cycle) for Post-Lab Section C(a)–(c), yielding odd Fourier coefficients `9.55, 3.18, 1.91 V` (`19.60, 10.06, 5.62 dBV`) and filtered outputs `7.63, 1.29, 0.49 V` (`17.65, 2.19, −6.19 dBV`) under the peak-amplitude `dBV` convention.
+  - **Actual Oscilloscope Measurements (`20.1 Vpp` input, `14.9 Vpp` output):** Documents the observed Channel 1 (`20.1 Vpp`) and smoothed Channel 2 (`14.9 Vpp`) waveforms at `8.00 kHz`, embeds the actual Keysight DSOX4024G screenshots (`Figures 5 & 6`), and discusses why `20.1 Vpp` exceeded the instructed `15 Vpp`.
+  - **Predicted Table C Values (`20.1 Vpp` basis — explicitly not claimed as measured):** Presents the partner's exact Table C predictions (`22.14, 12.60, 8.17 dBV` input; `20.19, 4.72, −3.65 dBV` output; `−1.95, −7.87, −11.82 dB` gain) and explains why reliable paired experimental FFT peak amplitudes could not be extracted from the saved screenshots.
+- **`Lab_Report2.pdf`** *(15 pages)* — Matching PDF counterpart with the official **ECU Groupwork Cover Sheet** embedded as Page 1 (unit details pre-filled and student AcroForm fields preserved as interactive fillable fields), **Abstract** (`313 words`), populated **Table of Contents**, **Conclusion** (`202 words`), **APA 7th References**, and **Acknowledgement of AI Use**.
